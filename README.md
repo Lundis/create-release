@@ -1,27 +1,9 @@
 # GitHub Action - Releases API
 
-**Please note:** This repository is currently unmaintained by a team of developers at GitHub. The 
-repository is here and you can use it as an example, or in Actions. However please be aware that 
-we are not going to be updating issues or pull requests on this repository.
-
-**Maintained Actions:**
-* [elgohr/Github-Release-Action](https://github.com/elgohr/Github-Release-Action)
-* [marvinpinto/action-automatic-releases](https://github.com/marvinpinto/action-automatic-releases)
-* [softprops/action-gh-release](https://github.com/softprops/action-gh-release)
-* [ncipollo/release-action](https://github.com/ncipollo/release-action)
-
-
-To reflect this state we’ve marked this repository as Archived.
-
-If you are having an issue or question about GitHub Actions then please [contact customer support](https://help.github.com/en/articles/about-github-actions#contacting-support).
-
-If you have found a security issue [please submit it here](https://hackerone.com/github).
-
----
+A maintained version of the official deprecated action.
+This fork aims to be identical to the original, but have up-to-date dependencies and not use any deprecated stuff.
 
 This GitHub Action (written in JavaScript) wraps the [GitHub Release API](https://developer.github.com/v3/repos/releases/), specifically the [Create a Release](https://developer.github.com/v3/repos/releases/#create-a-release) endpoint, to allow you to leverage GitHub Actions to create releases.
-
-<a href="https://github.com/actions/create-release"><img alt="GitHub Actions status" src="https://github.com/actions/create-release/workflows/Tests/badge.svg"></a>
 
 ## Usage
 ### Pre-requisites
@@ -71,7 +53,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Create Release
         id: create_release
-        uses: actions/create-release@v1
+        uses: Lundis/create-release@v1.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
         with:
