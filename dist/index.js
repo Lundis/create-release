@@ -9616,13 +9616,12 @@ function wrappy (fn, cb) {
 /***/ ((module, __unused_webpack_exports, __nccwpck_require__) => {
 
 const core = __nccwpck_require__(2186);
-const { GitHub, context } = __nccwpck_require__(5438);
+const github = __nccwpck_require__(5438);
 const fs = __nccwpck_require__(7147);
 
 async function run() {
   try {
-    // Get authenticated GitHub client (Ocktokit): https://github.com/actions/toolkit/tree/master/packages/github#usage
-    const github = new GitHub(process.env.GITHUB_TOKEN);
+    const octokit = github.getOctokit(process.env.GITHUB_TOKEN);
 
     // Get owner and repo from context of payload that triggered the action
     const { owner: currentOwner, repo: currentRepo } = context.repo;
@@ -9653,7 +9652,7 @@ async function run() {
     // Create a release
     // API Documentation: https://developer.github.com/v3/repos/releases/#create-a-release
     // Octokit Documentation: https://octokit.github.io/rest.js/#octokit-routes-repos-create-release
-    const createReleaseResponse = await github.repos.createRelease({
+    const createReleaseResponse = await octokit.rest.repos.createRelease({
       owner,
       repo,
       tag_name: tag,
